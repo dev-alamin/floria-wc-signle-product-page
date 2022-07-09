@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>WP Rest API</h2>
+                <p class="alert alert-success is-success" style="display: none;">Your post has been saved!</p>
+                <form name="rest" id="rest" action="" class="form">
+                    <div class="form-group mt-3">
+                        <label for="title">Title</label>
+                        <input id="title" type="text" name="title" class="form-control">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="status">Status</label>
+                        <select name="status" id="status">
+                            <option value="" selected disabled>Select status</option>
+                            <option value="publish">Publish</option>
+                            <option value="future">Future</option>
+                            <option value="private">Private</option>
+                            <option value="draft">Draft</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                    <input type="submit" name="submit" class="btn btn-primary mt-3">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example POST method implementation:
+        let username = 'admin';
+        let password = 'QjSH 7oU9 odKD fZet CeeA isKo"';
+        let authString = `${username}:${password}`
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.set('Authorization', 'Basic ' + btoa(authString))
+
+        async function postData(url = '', data = {}) {
+            // Default options are marked with *
+            const response = await fetch(url, {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: headers,
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: JSON.stringify(data) // body data type must match "Content-Type" header
+            });
+
+            if (response.ok) {
+                makeTheFieldEmptry();
+            }
+            return response.json(); // parses JSON response into native JavaScript objects
+        }
+
+        const ourFrom = document.getElementById("rest");
+        const title = ourFrom.querySelector("#title");
+        const content = ourFrom.querySelector("#content");
+        const status = ourFrom.querySelector("#status");
+
+        ourFrom.onsubmit = (e) => {
+            e.preventDefault();
+
+            postData('https://almn.me/wp-json/wp/v2/posts/', { title: title.value, content: content.value, status: status.value })
+                .then(data => {
+                    console.log(data); // JSON data parsed by `data.json()` call
+                });
+        }
+
+        function makeTheFieldEmptry() {
+            title.value = "";
+            content.value = "";
+            status.value = "Select status";
+
+            document.querySelector(".is-success").style.display = "block";
+        }
+
+
+    </script>
+</body>
+
+
+Hi, I am having an issue. 
+
+I want to override my woocommerce template using child theme. 
+But no changes are affecting the result. 
+
+May be it is thrive builder's issue. 
+How can I disable all the control of thrive in woocommerce page/templates? 
