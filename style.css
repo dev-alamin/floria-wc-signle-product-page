@@ -1,254 +1,310 @@
+/* Woocommmerce css  */
+header.wc-custom-header {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 22% 78%;
+    gap: 15px;
+}
 
+header.wc-custom-header .wc-custom-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
 
+header.wc-custom-header .wc-custom-nav ul li {
+    display: inline-block;
+    position: relative;
+}
 
+header.wc-custom-header .wc-custom-nav {}
 
-        /* Woocommmerce css  */
-        header.wc-custom-header {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 22% 78%;
-            gap: 15px;
-        }
+header.wc-custom-header .wc-custom-nav ul li>ul {
+    position: absolute;
+    background: #fff;
+    z-index: 99;
+    width: max-content;
+    border: 1px solid #ddd;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    text-align: left;
+}
 
-        header.wc-custom-header .wc-custom-nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            text-align: right;
-        }
+header.wc-custom-header .wc-custom-nav ul li>ul li {
+    display: block;
+    padding-left: 0 !important;
+    margin: 0;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li {
-            display: inline-block;
-            position: relative;
-        }
+header.wc-custom-header .wc-custom-nav ul li>ul li a {
+    color: #333;
+    padding: 7px 10px;
+    display: block;
+}
 
-        header.wc-custom-header .wc-custom-nav {}
+header.wc-custom-header .wc-custom-nav ul li>ul li a:hover {
+    background: #a00;
+    text-decoration: none;
+    color: #fff;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li>ul {
-            position: absolute;
-            background: #fff;
-            z-index: 99;
-            width: max-content;
-            border: 1px solid #ddd;
-            top: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: .3s;
-            text-align: left;
-        }
+header.wc-custom-header .wc-custom-nav ul li:hover>ul {
+    opacity: 1;
+    visibility: visible;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li>ul li {
-            display: block;
-            padding-left: 0 !important;
-            margin: 0;
-        }
+body.woocommerce .post-wrapper {
+    padding-top: 0 !important;
+    margin-top: 0;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li>ul li a {
-            color: #333;
-            padding: 7px 10px;
-            display: block;
-        }
+header.wc-custom-header .wc-custom-nav ul li a {
+    color: #333;
+    padding: 17px;
+    display: block;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li>ul li a:hover {
-            background: #a00;
-            text-decoration: none;
-            color: #fff;
-        }
+header.wc-custom-header .menu-item-has-children {
+    position: relative;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li:hover>ul {
-            opacity: 1;
-            visibility: visible;
-        }
+header.wc-custom-header .menu-item-has-children:after {
+    content: "⌄";
+    position: absolute;
+    top: 7px;
+    right: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
 
-        body.woocommerce .post-wrapper {
-            padding-top: 0 !important;
-            margin-top: 0;
-        }
+.wc-cusotm-logo a img {
+    max-width: 200px;
+}
 
-        header.wc-custom-header .wc-custom-nav ul li a {
-            color: #333;
-            padding: 17px;
-            display: block;
-        }
+header#wc-banner-header {
+    min-height: 275px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 0;
+}
 
-        header.wc-custom-header .menu-item-has-children {
-            position: relative;
-        }
+header#wc-banner-header h2 {
+    font-size: 46px;
+    color: #fff;
+    padding: 10px 0;
+}
 
-        header.wc-custom-header .menu-item-has-children:after {
-            content: "⌄";
-            position: absolute;
-            top: 7px;
-            right: 0;
-            font-size: 18px;
-            font-weight: bold;
-        }
+header#wc-banner-header:after {
+    position: absolute;
+    content: "";
+    background: #000;
+    height: 100%;
+    width: 100%;
+    opacity: .8;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
 
-        .wc-cusotm-logo a img {
-            max-width: 200px;
-        }
+.wc-banner-header .page-title {
+    text-align: center;
+    color: #fff;
+    max-width: 1200px;
+    text-align: left;
+    margin: auto;
+    padding: 110px 0;
+}
 
-        header#wc-banner-header {
-            min-height: 275px;
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            position: relative;
-            z-index: 0;
-        }
+.wc-banner-header .page-title a {
+    color: #fff;
+}
 
-        header#wc-banner-header h2 {
-            font-size: 46px;
-            color: #fff;
-            padding: 10px 0;
-        }
+/* Content  */
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
 
-        header#wc-banner-header:after {
-            position: absolute;
-            content: "";
-            background: #000;
-            height: 100%;
-            width: 100%;
-            opacity: .8;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
-        .wc-banner-header .page-title {
-            text-align: center;
-            color: #fff;
-            max-width: 1200px;
-            text-align: left;
-            margin: auto;
-            padding: 110px 0;
-        }
+.wc-single-main-content-wrapper .content-block,
+.single-sidebar-block {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 40px;
+}
 
-        .wc-banner-header .page-title a {
-            color: #fff;
-        }
+.single-product {
+    background: #edf0f2 !important;
+}
 
-        /* Content  */
-        .videowrapper {
-            float: none;
-            clear: both;
-            width: 100%;
-            position: relative;
-            padding-bottom: 56.25%;
-            padding-top: 25px;
-            height: 0;
-        }
+ul.course-meta-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
-        .videowrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+ul.course-meta-list li {
+    margin-bottom: 10px;
+    display: block;
+    position: relative;
+    margin-left: 0;
+}
 
-        .wc-single-main-content-wrapper .content-block,
-        .single-sidebar-block {
-            padding: 20px;
-            background: #fff;
-            margin-bottom: 40px;
-        }
+ul.course-meta-list li:before {
+    content: "✓ ";
+    color: #a00;
+    font-weight: bold;
+}
 
-        .single-product {
-            background: #edf0f2 !important;
-        }
+.single-sidebar-block .title h2 {
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 6px;
+}
 
-        ul.course-meta-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.single-sidebar-block .title h2:after {
+    content: "";
+    background: #a00;
+    height: 3px;
+    width: 80px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
 
-        ul.course-meta-list li {
-            margin-bottom: 10px;
-            display: block;
-            position: relative;
-            margin-left: 0;
-        }
+.wc-single-content-left .about-the-instructor .instructor {
+    display: flex;
+    border: 1px solid #ddd;
+    align-items: center;
+}
 
-        ul.course-meta-list li:before {
-            content: "✓ ";
-            color: #a00;
-            font-weight: bold;
-        }
+.wc-single-content-left .about-the-instructor .instructor .thumb {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        .single-sidebar-block .title h2 {
-            margin-bottom: 15px;
-            position: relative;
-            padding-bottom: 6px;
-        }
+.wc-single-content-left .about-the-instructor .instructor .thumb img {
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+    height: 80px;
+    width: auto;
+    max-width: 85px;
+}
 
-        .single-sidebar-block .title h2:after {
-            content: "";
-            background: #a00;
-            height: 3px;
-            width: 80px;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-        }
+.wc-single-content-left .about-the-instructor {}
 
-        .wc-single-content-left .about-the-instructor .instructor {
-            display: flex;
-            border: 1px solid #ddd;
-            align-items: center;
-        }
+.wc-single-content-left .about-the-instructor .instructor-history {
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 10px;
+    display: flex;
+}
 
-        .wc-single-content-left .about-the-instructor .instructor .thumb {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: block;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+.wc-single-content-left .about-the-instructor .instructor-history .single-history {
+    margin-right: 16px;
+}
 
-        .wc-single-content-left .about-the-instructor .instructor .thumb img {
-            width: 100%;
-            max-height: 100%;
-            max-width: 100%;
-            border-radius: 50%;
-            height: 80px;
-            width: auto;
-            max-width: 85px;
-        }
+/* Breadcrumb */
+header#wc-banner-header .breadcrumb a {
+    padding: 0 8px;
+}
 
-        .wc-single-content-left .about-the-instructor {}
+header#wc-banner-header .breadcrumb span.current {
+    margin-left: 10px;
+}
 
-        .wc-single-content-left .about-the-instructor .instructor-history {
-            border: 1px solid #ddd;
-            border-top: none;
-            padding: 10px;
-            display: flex;
-        }
+/* Content  */
+.sidebar-course-meta {
+    margin-top: 15px;
+}
 
-        .wc-single-content-left .about-the-instructor .instructor-history .single-history {
-            margin-right: 16px;
-        }
+.sidebar-course-meta .price h2 {
+    font-size: 23px;
+}
 
-        /* Breadcrumb */
-        header#wc-banner-header .breadcrumb a {
-            padding: 0 8px;
-        }
+/* footer  */
 
-        header#wc-banner-header .breadcrumb span.current {
-            margin-left: 10px;
-        }
+footer.wc-custom-footer {
+    background: rgb(0, 0, 0) !important;
+    color: #ddd;
+}
 
-        /* Content  */
-        .sidebar-course-meta {
-            margin-top: 15px;
-        }
+footer.wc-custom-footer .wc-footer-single ul {
+    padding: 0;
+    list-style: none;
+    margin: 12px 0;
+}
 
-        .sidebar-course-meta .price h2 {
-            font-size: 23px;
-        }
+footer.wc-custom-footer .wc-footer-single ul li a {
+    display: block;
+    color: #ddd;
+    padding: 4px;
+}
+
+footer.wc-custom-footer .wc-footer-single ul li a:hover {
+    text-decoration: none;
+}
+
+.wc-copyright-footer p {
+    color: #ddd;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+footer.wc-custom-footer .wc-footer-single .wc-footer-title {
+    color: #ddd;
+    margin-top: 5px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+footer.wc-custom-footer .wc-footer-single ul li {
+    margin: 0;
+}
+
+footer.wc-custom-footer {
+    padding: 25px 0;
+}
+
+footer.wc-custom-footer .wc-footer-single .wc-footer-title:after {
+    content: "";
+    background: #ddd;
+    height: 3px;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+footer.wc-custom-footer h4,
+footer.wc-custom-footer p {
+    color: #ddd;
+}

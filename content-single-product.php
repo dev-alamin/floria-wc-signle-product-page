@@ -41,50 +41,68 @@ if ( post_password_required() ) {
                         </div>
                         <div class="course-meta">
                             <div class="top-meta">
-                                <p><span>by</span>Team TechChef</p>
-                                <p><span>Course level</span> Intermediate</p>
+                              
+                              <?php 
+                              $ins_name = carbon_get_the_post_meta( 'fca_instructor_name' );
+                              $course_level = carbon_get_the_post_meta( 'fca_course_label' );
+                              $course_cat = carbon_get_the_post_meta( 'fca_course_categories' );
+                              $course_duration = carbon_get_the_post_meta( 'fca_course_duration' );
+                              $course_tot_enrolled = carbon_get_the_post_meta( 'fca_course_tot_enrolled' );
+                              $course_about = carbon_get_the_post_meta( 'fca_course_about' );
+                              ?>
+                                <p><span>by</span><?php echo $ins_name; ?></p>
+                                <p><span>Course level</span><?php echo $course_level; ?></p>
                               
                             </div>
                             <div class="course-details">
-                                <div class="sinlge-details"><span>Categories</span>Fitness</div>
-                                <div class="sinlge-details"><span>Duration</span>5h</div>
-                                <div class="sinlge-details"><span>Total Enrolledment</span>5h</div>
-                                <div class="sinlge-details"><span>Last Update</span>July 12, 2022</div>
+                                <div class="sinlge-details"><span>Categories</span><?php echo $course_cat; ?></div>
+                                <div class="sinlge-details"><span>Duration</span><?php echo $course_duration; ?></div>
+                                <div class="sinlge-details"><span>Total Enrolledment</span><?php echo $course_tot_enrolled; ?></div>
+                                <div class="sinlge-details"><span>Last Update</span><?php echo the_modified_time('F jS, Y') ?></div>
                             </div>
                             <div class="bottom-meta about-course">
-                                <h4>About Course</h4>
+                                <h4 class="block-title">About Course</h4>
                                 <p class="about-content">
-                              The 30 Days Power Yoga For Weight Loss course is a progressive journey divided into 4 weeks.
+                              <?php echo $course_about; ?>
                               </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="content-block description">
-                        <h4>Description</h4>
-                        <p><span>10 Ways To Increase your Vitility:</span> Lorem ipsum dolor, sit amet consectetur
-                            adipisicing
-                            elit. Voluptate animi voluptatibus velit quibusdam distinctio esse quasi a iure debitis
-                            dolorum.
-                        </p>
-                        <p><span>10 Ways To Increase your Vitility:</span> Lorem ipsum dolor, sit amet consectetur
-                            adipisicing
-                            elit. Voluptate animi voluptatibus velit quibusdam distinctio esse quasi a iure debitis
-                            dolorum.
-                        </p>
-                        <p><span>10 Ways To Increase your Vitility:</span> Lorem ipsum dolor, sit amet consectetur
-                            adipisicing
-                            elit. Voluptate animi voluptatibus velit quibusdam distinctio esse quasi a iure debitis
-                            dolorum.
-                        </p>
+                      <?php
+                      $fca_course_desc_head = carbon_get_the_post_meta( 'fca_course_desc_heading' );
+                      $fca_course_desc = carbon_get_the_post_meta( 'fca_course_description' );
+                      $fca_course_what_learn_head = carbon_get_the_post_meta( 'fca_course_learn_point_heading' );
+                      $fca_course_what_learn_points = carbon_get_the_post_meta( 'fca_course_what_will_i_learn' );
+                      ?>
+                        <h4 class="block-title">
+                          <?php if($fca_course_desc_head == NULL): ?>
+                          Description
+                          <?php else:
+                          echo $fca_course_desc_head;
+                          endif; ?>
+                      </h4>
+                  <div class="course-description">
+                        <?php echo  wp_kses_post( wpautop( $fca_course_desc ) ); ?>
+                  </div>
                     </div>
                     <div class="content-block what-will-i-learn">
-                        <h4 class="block-title">What Will I Learn</h4>
+                           <h4 class="block-title">
+                          <?php if( $fca_course_learn_point_heading == NULL): ?>
+                          What Will I Learn
+                          <?php else:
+                          echo $fca_course_learn_point_heading;
+                          endif; ?>
+                      </h4>
+                    <?php if ($fca_course_what_learn_points) : ?>
                         <ul class="single-learn course-meta-list">
-                            <li>Lose weight and gain muscle mass.</li>
-                            <li>Grasp yoga concepts and have in depth knowledge of aasanas and excercise.</li>
-                            <li>Have a deep understanding of diet and nutrition.</li>
-                        </ul>
+                        <?php
+                        foreach ($fca_course_what_learn_points as $data) : ?>   
+                                <li><?php echo $data['fca_what_learn']; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
                     </div>
                     <div class="content-block course-topics">
                         <div class="accordion" id="accordionExample">
@@ -193,29 +211,76 @@ if ( post_password_required() ) {
             <div class="col-lg-4">
                 <div class="wc-single-content-right single-content">
                     <div class="single-sidebar-block">
-                        <div class="videowrapper">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/1Rs2ND1ryYc"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
+                      <?php
+                          $fca_course_material_video = carbon_get_the_post_meta('fca_course_material_video');
+                          ?>
+                      
+                          <?php
+                          foreach ($fca_course_material_video as $data) : ?>
+                              <?php if ($data['fca_mat_vid']) : ?>
+                                  <div class="local-video">
+                                      <video width="100%" height="100%" controls src="<?php echo $data['fca_mat_vid'] ?>">
+                                          Your browser does not support the video tag.
+                                      </video>
+                                  </div>
+                              <?php elseif( $data['fca_mat_yt'] ): ?>
+                                  <div class="videowrapper">
+                                      <iframe width="560" height="315" src="<?php echo $data['fca_mat_yt'] ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                  </div>
+                              <?php endif; ?>
+
+                          <?php endforeach; ?>
                         <div class="sidebar-course-meta">
                             <div class="price">
-                                <h2>Rs 500</h2>
+                                <h2><?php
+                                  
+                                  $fca_price = get_post_meta( get_the_ID(), '_regular_price', true);
+                                  $fca_sale = get_post_meta( get_the_ID(), '_sale_price', true);
+                                  
+                                 // echo 'Regular Price: ' . $fca_price; 
+                                  //echo 'Sale Price: ' . $fca_sale; 
+                                  echo 'Price: ' . $product->get_price_html();
+                                  ?>
+                              </h2>
                             </div>
-                            <div class="title">
-                                <h2>Material Includes</h2>
+                          <?php 
+                          $fca_course_material_head = carbon_get_the_post_meta( 'fca_course_material_heading' );
+                          $fca_course_material = carbon_get_the_post_meta( 'fca_course_material' );
+                          ?>
+                            
+                          <div class="title">
+                          <h2>
+                            <?php if($fca_course_material_head == NULL): ?>
+                              Description
+                              <?php else:
+                              echo $fca_course_material_head;
+                            endif; ?>
+                          </h2>
                             </div>
-                            <ul class="sidebar-course-includes course-meta-list">
-                                <li>12 hours on-demand video</li>
-                                <li>3 articles</li>
-                                <li>13 downloadable resources</li>
-                                <li>Full lifetime access</li>
-                                <li>Access on mobile and TV</li>
-                                <li>Certification of Completion</li>
-                            </ul>
+                               <?php if ($fca_course_material) : ?>
+                                    <ul class="sidebar-course-includes course-meta-list">
+                                    <?php
+                                    foreach ($fca_course_material as $data) : ?>   
+                                            <li><?php echo $data['fca_material']; ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                          
                             <div class="add-to-cart">
-                                <button>Add to cart</button>
+                              <?php 
+                              global $product;
+
+                                echo apply_filters( 'woocommerce_loop_add_to_cart_link',
+                                    sprintf( '<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" class="button %s product_type_%s">%s</a>',
+                                        esc_url( $product->add_to_cart_url() ),
+                                        esc_attr( $product->get_id() ),
+                                        esc_attr( $product->get_sku() ),
+                                        $product->is_purchasable() ? 'add_to_cart_button' : '',
+                                        esc_attr( $product->get_type() ),
+                                        esc_html( $product->add_to_cart_text() )
+                                    ),
+                                $product );
+                              ?>
                             </div>
                         </div>
                     </div>
